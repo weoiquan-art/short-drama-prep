@@ -1,19 +1,22 @@
 ---
 name: jin-short-drama-prep
 description: >-
-  短剧筹备 / short-drama pre-production: turn an idea into a brief, world rules, character-prop-location cards, a space map, a shot list with time budget, a sound plan, a continuity audit and a batch plan (text only); hand video prompts to the prompt Skills.
+  短剧筹备 / short-drama pre-production: turn an idea into a brief, a script, world rules, character-prop-location cards, a space map, a shot list with time budget and keyframe picks, a sound plan, a continuity audit and a batch plan (text only); hand video prompts to the prompt Skills.
 ---
 
 # 短剧筹备
 
-把一句想法做成开拍前的文字方案：项目简报、世界与视觉规则、人物／道具／场景设定、空间地图、镜头表与时长、声音与转场计划、连续性检查、分批制作计划。只写文字，不生成图像、视频、音频。
+把一句想法做成开拍前的文字方案：项目简报、剧本、世界与视觉规则、人物／道具／场景设定、空间地图、镜头表与时长、选哪些镜头先出图、声音与转场计划、连续性检查、分批制作计划。只写文字，不生成图像、视频、音频。
 
 来源：cinematic-prompt-toolkit 完整版（导演模板库 v1.0.0，[原文存档](references/cinematic-prompt-toolkit-v1.0.0.md)）。JIN 2026-10-08："cinematic 完整版 属于短片全流程策划模板库作者的"；2026-10-09："关于cinematic prompit toolkit 是一个制作短剧前的流程 我觉得要放另外skill 因为虽然放一起方便但ai会晕 然后如果是这样 就放另外skill 就取名短剧筹备skill"。模块正文逐字取自 toolkit；入口按 JIN 的拆法改过。
+
+第二来源：豆包官方 Skill doubao-creative-drama（JIN 2026-10-09 上传）。JIN 2026-10-09："1 不能装进claude 那就提炼进本身我们的skill吧，比例限制 15 秒这些是束缚不用加，豆包末尾要求提示词尾端的负面提示词感觉 是用于seadance 2.0 的 2.5 应该不需要  然后选b ，提示词的skill 归类提示词skill drama 的就选b"。M6、M7（D01–D09）是整理者从它提炼的中文，不是原文；原文存在 video-exp 的 sources/doubao-creative-drama/。
 
 ## 分工
 - 写视频提示词不在本 Skill：真人／写实 → jin-realism-video-prompt（weoiquan-art/video-prompit-for-realism）；Q 版 Chibi → weoiquan-art/chibi-；其他动画、漫剧 → 通用视频 Skill（weoiquan-art/-prompit-for-ai-video-generator）。本 Skill 交出镜头表（T14）、首帧（T15）、声音计划（T18）等，提示词由它们写。toolkit 的 T16、T17（视频提示词模板）不收。
 - 复盘、失败、成片记录 → video-exp（weoiquan-art/video-exp-）。toolkit 的 T21（失败结果定向修复）、《雨停之前》完整示例、来源与边界，放在 video-exp 的 sources/cinematic-prompt-toolkit/。
-- 出图：M2 里的图像提示词骨架与 higgs-asset-prep 有重叠，先放这里，要不要合并由 JIN 定。
+- 豆包 Skill 里写视频提示词的部分（关键帧锚点、对应表、多人称呼、不用 `--`）放在真人 Skill 的 R21，音乐、音效、台词、旁白、字幕的标注符号放在 R15。豆包的生图、生视频调用和文件交付方式不适用于本 Skill；15 秒片段、画幅限制、一次 2 个视频、提示词尾部负面词不收。
+- 出图：M2 里的图像提示词骨架与 higgs-asset-prep 有重叠，先放这里，要不要合并由 JIN 定；M7 的 D06、D09 同样。
 
 ## 本地执行边界（toolkit 原文）
 只生成、修改、审阅文本。不得调用 Higgsfield 插件、官网制作功能、API、上传、生成、渲染或发布服务，也不得通过其他工具间接执行这些操作。不调用其他图像、视频、音频生成工具。不读取余额或安装外部插件。
@@ -33,6 +36,8 @@ description: >-
 8. 用户要最终提示词时只给终稿；要分析时提供简洁可见的依据，不输出隐含推理。没有明确文件需求时直接在聊天交付。
 
 ## 模块
+T 编号是 toolkit 原文模块；D 编号是豆包提炼（M6、M7）。指定 D 编号时同样只读对应文件。
+
 | 编号 | 用途 | 文件 |
 |---|---|---|
 | T01 | 项目简报与故事方向 | [m1-story.md](modules/m1-story.md) |
@@ -54,6 +59,15 @@ description: >-
 | T19 | 转场、动作匹配与声音桥 | [m4-sound-transition.md](modules/m4-sound-transition.md) |
 | T20 | 连续性与矛盾审计 | [m5-check-plan.md](modules/m5-check-plan.md) |
 | T22 | 分批制作、候选选择与剪辑计划 | [m5-check-plan.md](modules/m5-check-plan.md) |
+| D01 | 剧作基调与章节结构 | [m6-script-shots.md](modules/m6-script-shots.md) |
+| D02 | 剧本四段产物：梗概、人物小传、场景清单、分场剧本 | [m6-script-shots.md](modules/m6-script-shots.md) |
+| D03 | 超过 10 集的长剧本 | [m6-script-shots.md](modules/m6-script-shots.md) |
+| D04 | 分镜层级与节奏档位 | [m6-script-shots.md](modules/m6-script-shots.md) |
+| D05 | 镜头写法：POV、动作、连续性 | [m6-script-shots.md](modules/m6-script-shots.md) |
+| D06 | 风格锚点与资产清单 | [m7-assets-frames.md](modules/m7-assets-frames.md) |
+| D07 | 资产顺序、换造型、风格验收 | [m7-assets-frames.md](modules/m7-assets-frames.md) |
+| D08 | 选哪些镜头做关键帧 | [m7-assets-frames.md](modules/m7-assets-frames.md) |
+| D09 | 关键帧图提示词的补充写法 | [m7-assets-frames.md](modules/m7-assets-frames.md) |
 | T16、T17 | 单镜头视频提示词、多镜头视频批次 | 不收：交给提示词 Skill |
 | T21 | 失败结果的定向修复 | 不收：在 video-exp |
 
@@ -64,6 +78,9 @@ description: >-
 - 旧人物进入新地点：现有身份信息＋T07，然后 T15；要视频提示词，交给对应的提示词 Skill。
 - 多镜头剧情：T12 → T14 → 交给提示词 Skill；只读取当前需要的步骤。
 - 开拍前查矛盾：T20。成片出问题的修复与复盘在 video-exp。
+- 要完整剧本：D01 定基调 → D02 四段（超过 10 集加 D03）→ D04、D05 配 T14 拆镜。
+- 规划资产：D06 定风格锚点和清单 → T03、T04、T06、T07 → D07 排顺序、换造型、验收。
+- 哪几镜先出图：D08 选帧 → T15 写图（补充写法见 D09）。
 
 ## 修改治理
 - 读取、审查、复盘、比较、学习，只授权分析，不授权修改本 Skill。
